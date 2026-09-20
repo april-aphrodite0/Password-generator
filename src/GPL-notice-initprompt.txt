@@ -2,3 +2,10 @@ password-generator version 0.1.0 BETA, Copyright (C) 2026 april-aphrodite0, vubr
 password-generator comes with ABSOLUTELY NO WARRANTY; for details type `show warranty'.
 This is free software, and you are welcome to redistribute it
 under certain conditions; type `show conditions' for details.
+
+Available commands:
+  generate         generate a password
+  show warranty    show the warranty notice
+  show conditions  show the license conditions
+  help             show this message
+  exit / quit      exit the program

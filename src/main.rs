@@ -18,38 +18,73 @@
 use std::io;
 use std::io::Write;
 mod pager;
+mod generator;
 const NOTICE: &str = include_str!("GPL-notice-initprompt.txt");
 
 // MAIN
 fn main() {
-    
-    // VARIABLES
-    let mut user_prompt: String = String::new();
 
-    // NOTICE AND INITIAL PROMPT
-    print!("{}\n\nuser: ", NOTICE);
+    // PRINT NOTICE ONCE AT STARTUP
+    println!("{}", NOTICE);
 
-    // USER INPUT
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut user_prompt).expect("failed to read line");
-    let user_prompt_string: &str = user_prompt.trim();
+    // MAIN LOOP
+    loop {
 
-    // USER PROMPT MATCHER
-    match user_prompt_string {
+        // PROMPT
+        print!("\nuser: ");
+        io::stdout().flush().unwrap();
 
-        // WARRANTY
-        "show warranty" => {
-            pager::warranty();
+        // VARIABLES
+        let mut user_prompt: String = String::new();
+
+        // USER INPUT
+        io::stdin().read_line(&mut user_prompt).expect("failed to read line");
+        let user_prompt_string: &str = user_prompt.trim();
+
+        // USER PROMPT MATCHER
+        match user_prompt_string {
+
+            // WARRANTY
+            "show warranty" => {
+                pager::warranty();
+            }
+
+            // CONDITIONS
+            "show conditions" => {
+                pager::conditions();
+            }
+
+            // GENERATE PASSWORD
+            "generate" => {
+                generator::createpassword();
+            }
+
+            // HELP
+            "help" => {
+                println!(
+                    "available commands:\n\
+                     \x20 generate         - generate a password\n\
+                     \x20 show warranty    - show the warranty notice\n\
+                     \x20 show conditions  - show the license conditions\n\
+                     \x20 help             - show this message\n\
+                     \x20 exit / quit      - exit the program"
+                );
+            }
+
+            // EXIT
+            "exit" | "quit" => {
+                return();
+            }
+            
+            // NO INPUT
+            "" => {}
+
+            // UNKNOWN COMMAND
+            _ => {
+                println!("unknown command, type 'help' for a list");
+            }
+
         }
-
-        
-        // CONDITIONS
-        "show conditions" => {
-            pager::conditions();
-        }
-
-        // NO INPUT
-        _ => {}
 
     }
 
