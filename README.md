@@ -1,2 +1,4 @@
 # Password-generator
-Password generator by me and my friends!
+a Password generator written in Rust made by me and my friends!
+
+Password-generator is distributed under the MIT license
