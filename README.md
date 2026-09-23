@@ -4,11 +4,14 @@ a Password generator written in Rust made by me and my friends!
 Copyright (C) 2026 april-aphrodite0, vubrixx, ghmaxx1k, distribuited on the GNU/GPLv2 license
 
 # How to install
-    sudo make install
+    just install the zip and go into your terminal and cd into where you download it and 'cargo run'
+    make sure to extract it before you do this
 
 # About
 current version: 0.1.0 BETA
 current stable: none
+i'm thinking to make this a good password generator
+uhhhh i been thinking about making a security program
 
 A command-line password generator that lets you control the
 length and character types of each generated password.
